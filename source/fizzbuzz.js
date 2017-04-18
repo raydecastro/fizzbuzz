@@ -1,70 +1,67 @@
 class FizzBuzz {
-    multiplesOfThree(endNum) {
-        let arr = [];
+    constructor() {
+        this.fizzText = "Fizz";
+        this.buzzText = "Buzz";
+        this.fizzBuzzText = this.fizzText + this.buzzText;
+    }
 
-        for (let i = 1; i <= endNum; i++) {
-            arr.push(this.getFizz(i));
+    multiplesOfThree(maxNumber) {
+        return this.generateArray(1, maxNumber, this.getFizz);
+    }
+
+    generateArray(minNumber, maxNumber, functionToExecute) {
+        let list = [];
+
+        for (let i = minNumber; i <= maxNumber; i++) {
+            list.push(functionToExecute.call(this, i));
         }
 
-        return arr;
+        return list;
     }
 
     getFizz(aNumber) {
-        let remainder = aNumber % 3;
-
-        if (remainder === 0) {
-            return "Fizz";
+        if (this.isDivisibleByThree(aNumber)) {
+            return this.fizzText;
         }
 
         return aNumber;
     }
 
-    multiplesOfFive(endNum) {
-        let arr = [];
-
-        for (let i = 1; i <= endNum; i++) {
-            arr.push(this.getBuzz(i));
-        }
-
-        return arr;
+    isDivisibleByThree(aNumber) {
+        return (aNumber % 3) === 0;
     }
 
+    multiplesOfFive(maxNumber) {
+        return this.generateArray(1, maxNumber, this.getBuzz);
+    }
+        
     getBuzz(aNumber) {
-        let remainder = aNumber % 5;
-
-        if (remainder === 0) {
-            return "Buzz";
+        if(this.isDivisibleByFive(aNumber)) {
+            return this.buzzText;
         }
 
         return aNumber;
     }
 
-    multiplesOfThreeAndFive(endNum) {
-        let arr = [];
-        for (let i = 1; i <= endNum; i++) {
-            arr.push(this.getFizzBuzz(i));
-        }
-        return arr;
+    isDivisibleByFive(aNumber) {
+        return (aNumber % 5) === 0;
+    }
+
+    multiplesOfThreeAndFive(maxNumber) {
+        return this.generateArray(1, maxNumber, this.getFizzBuzz);
     }
 
     getFizzBuzz(aNumber) {
-        let remainder15 = aNumber % 15;
-        let remainder3 = aNumber % 3;
-        let remainder5 = aNumber % 5;
-
-        if (remainder15 === 0) {
-            return "FizzBuzz";
-        } else if (remainder3 === 0) {
-            return this.getFizz(aNumber);
-        } else if (remainder5 === 0) {
-            return this.getBuzz(aNumber);
+        if (this.isDivisibleByThree(aNumber) && this.isDivisibleByFive(aNumber)) {
+            return this.fizzBuzzText;
+        } else if (this.isDivisibleByThree(aNumber)) {
+            return this.fizzText;
+        } else if (this.isDivisibleByFive(aNumber)) {
+            return this.buzzText;
         }
 
         return aNumber;
     }
 }
-
-
-
 
 export default FizzBuzz;
