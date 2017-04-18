@@ -26,6 +26,23 @@ class FizzBuzz {
         return arr;
     }
 
+    multiplesOfThreeAndFive(endNum){
+        let arr = [];
+        for (let i = 1; i <= endNum; i++) {
+            let remainder3 = i % 3;
+            let remainder5 = i % 5;
+            if ( (remainder3 === 0)  && (remainder5 ===0) ) {
+                arr.push("FizzBuzz");
+            } else if (remainder3 === 0) {
+                arr.push("Fizz");
+            } else if (remainder5 === 0) {
+                arr.push("Buzz");
+            } else {
+                arr.push(i);
+            }
+        }
+        return arr;
+    }
 }
 
 
