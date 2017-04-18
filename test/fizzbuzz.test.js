@@ -12,6 +12,11 @@ describe("FizzBuzz", () => {
         let fizzBuzz = new FizzBuzz();
 
         expect(fizzBuzz.multiplesOfThree(15)).to.deep.equal([1, 2,'Fizz',4,5,'Fizz',7,8,'Fizz',10,11,'Fizz',13,14,'Fizz']);
-        });
+    });
+    it("shall have a method that returns Buzz for multiples of five", () => {
+        let fizzBuzz = new FizzBuzz();
+
+        expect(fizzBuzz.multiplesOfFive(15)).to.deep.equal([1,2,3,4,'Buzz',6,7,8,9,'Buzz',11,12,13,14,'Buzz']);
+    });
 
 });
